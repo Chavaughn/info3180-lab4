@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block main %}
+<h1 class="page-header">Uploaded Images</h1>
+
+{% if image_files %}
+<div class="images-box fade-in">
+    {% for filename in image_files %}
+    <div class="image-view">
+        <img class="the-image " src="{{ url_for('get_image', filename=filename) }}" alt="{{ filename }}">
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No images uploaded yet.</p>
+{% endif %} {% endblock %}

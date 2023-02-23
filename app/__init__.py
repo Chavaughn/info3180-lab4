@@ -2,12 +2,15 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from .config import Config
+from flask_migrate import Migrate
+import os
 # import flask migrate here
 
 app = Flask(__name__)
 app.config.from_object(Config)
-
+app.config['UPLOAD_FOLDER'] = os.path.abspath('./uploads/')
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 # Instantiate Flask-Migrate library here
 
 # Flask-Login login manager
